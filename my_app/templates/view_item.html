@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="continer">
+        <div class="row">
+            <div class="col-lg-3"></div>
+            <div class="col-lg-6">
+
+
+    {% for blog in blogs %}
+    {% if blog.images %}
+    <div class="card mb-3 m-4" style="max-width: 540px;">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <img src="{{blog.images.url}}" class="card-img-top" alt="..." width="200px" height="200px">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title">{{blog.title}}</h5>
+                <p class="card-text">{{blog.content}}</p>
+                <a href="#" class="btn btn-primary">Add to Card</a>
+                
+            </div>
+          </div>
+        </div>
+      </div>
+      {% else %}
+      <div class="card mb-3 m-4" style="max-width: 540px;">
+        <div class="row g-0">
+          <div class="col-md-4">
+            
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title">{{blog.title}}</h5>
+                <p class="card-text">{{blog.content}}</p>
+                <a href="#" class="btn btn-primary">Add to Card</a>
+                
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endif %}
+
+    {% endfor %}
+
+</div>
+</div>
+</div>
+
+
+
+
+{% endblock %}

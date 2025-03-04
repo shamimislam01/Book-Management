@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+    
+    {% block content %}
+    
+
+
+    <div class="container">
+        
+    <div class="row">
+        {% for blog in blogs %}
+        <div class="col-lg-3">
+        <div class="card mt-4" >
+            {% if blog.images %}
+            <img src="{{blog.images.url}}" class="card-img-top" alt="..." width="200px" height="200px">
+            <div class="card-body">
+                <h5 class="card-title">{{blog.title}}</h5>
+                <p class="card-text">{{blog.content}}</p>
+                <p class="card-text">
+                    Created: {{blog.created_at | date}}
+                    {% if blog.updated_at %}
+                    <span>( Updated: {{blog.updated_at | date}} )</span>
+                    {% endif %}
+                </p>
+                <a href="{% url 'edit' blog.pk %}" class="btn btn-primary">Edit</a>
+                <a href="{% url 'view_item' blog.pk %}" class="btn btn-info">View</a>
+                <a href="{% url 'delete' blog.pk %}" class="btn btn-danger">Delete</a>
+                
+            </div>
+
+            {% else %}
+            <div class="card-body pt-4">
+                <h5 class="card-title">{{blog.title}}</h5>
+                <p class="card-text">{{blog.content}}</p>
+                <p class="card-text">
+                    Created: {{blog.created_at  | date}}
+                    {% if blog.updated_at %}
+                    <span>( Updated: {{blog.updated_at | date}} )</span>
+                    {% endif %}
+                </p>
+                <a href="{% url 'edit' blog.pk %}" class="btn btn-primary">Edit</a>
+                <a href="{% url 'view_item' blog.pk %}" class="btn btn-info">View</a>
+                <a href="{% url 'delete' blog.pk %}" class="btn btn-danger">Delete</a>
+            </div>
+            {% endif %}
+        </div>
+
+
+    </div>
+        {% endfor %}
+
+    </div>
+    </div>
+
+    {% endblock %}
+
+
+
+
